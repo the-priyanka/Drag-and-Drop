@@ -123,6 +123,29 @@ function rebuiltArray() {
   updateDOM();
 }
 
+// Add to column list, reset textBox
+function addToColumn(column) {
+  const itemText = addItems[column].textContent;
+  const selectedArray = listArrays[column];
+  selectedArray.push(itemText);
+  addItems[column].textContent = "";
+  updateDOM();
+}
+
+// show input box
+function showInputBox(column) {
+  addBtns[column].style.visibility = "hidden";
+  saveItemBtns[column].style.display = "flex";
+  addItemContainers[column].style.display = "flex";
+}
+// hide input box
+function hideInputBox(column) {
+  addBtns[column].style.visibility = "visible";
+  saveItemBtns[column].style.display = "none";
+  addItemContainers[column].style.display = "none";
+  addToColumn(column);
+}
+
 // When Item Start Dragging
 function drag(e) {
   draggedItem = e.target;
